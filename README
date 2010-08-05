@@ -1,7 +1,7 @@
 pysmsd
 --------------------------------------------------------------------------------
 A python daemon which exposes a JSON based HTTP API for sending and receiving
-SMS messages to an attached sms compatible phone or modem.
+SMS messages to an attached SMS compatible phone or modem.
 
 
 License
@@ -11,10 +11,9 @@ pysmsd is pusblished by HIIT under the MIT License. See LICENSE for further info
 
 Dependencies
 --------------------------------------------------------------------------------
-pysmsd Relies on the gammu library for hardware communications, thus hardware 
-compatibility is determined by compatibility with gammu:
-    http://wammu.eu/phones/
-The above is a database of compatible hardware.
+pysmsd relies on the python bindings to the gammu library for hardware
+communications, thus hardware compatibility is determined by compatibility
+with gammu. http://wammu.eu/python-gammu/
 
 To get started you should have:
     - python 2.5 or above
@@ -28,7 +27,6 @@ To get started you should have:
     - A gammu compatible phone or modem with a suitable connection to
       the machine running pysmsd
         * check http://wammu.eu/phones 
-
 
 
 Installation
