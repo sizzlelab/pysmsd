@@ -1,0 +1,12 @@
+Handlers for (currently) incoming messages live here.
+Handlers should live in their own module and implement something based on the following:
+
+class Handler:
+    def handle(self, id):
+        # ... handle message with id
+
+print_handler.py has an example.
+
+To activate a handler it must exist in the pysmsd.handlers.enabled package. The daemon automatically tries to load all modules in this package.
+
+A typical way to do this is to have the handler module in this directory and then symlink it into enabled/.

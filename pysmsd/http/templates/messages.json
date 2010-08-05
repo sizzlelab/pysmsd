@@ -1,0 +1,8 @@
+<%! import json %>
+
+{"response": {
+    "code": 200,
+    "message": "OK"
+     },
+     "messages": ${ json.dumps(messages) | n }
+}

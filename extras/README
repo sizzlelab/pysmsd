@@ -1,0 +1,25 @@
+
+This directory, meant to be added to the end of the python path,
+contains a few required external python packages for use if no version
+is installed.  Only the required functionality from these packages,
+and only Python code, is included here.
+
+
+simplejson 2.0.4:
+
+    http://pypi.python.org/pypi/simplejson
+
+    - Omits speedups written in C.
+
+mako 0.2.2:
+
+    http://www.makotemplates.org/
+
+webob 0.9.4:
+
+    http://pypi.python.org/pypi/WebOb/
+
+cherrypy/wsgiserver 3.1.1:
+
+    http://www.cherrypy.org/wiki/CherryPyDownload
+

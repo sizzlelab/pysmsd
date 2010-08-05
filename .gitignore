@@ -1,0 +1,7 @@
+pysmsd/data/pysmsd.db
+
+# Temp files
+\#*
+\~*
+.DS_Store
+*.pyc

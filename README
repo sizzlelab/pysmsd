@@ -1,0 +1,98 @@
+pysmsd
+--------------------------------------------------------------------------------
+A daemon which exposes a JSON based HTTP API for sending and receiving SMS
+messages to an attached sms compatible phone or modem.
+
+pysmsd Relies on the gammu library for hardware communications, thus hardware 
+compatibility is determined by compatibility with gammu:
+    http://wammu.eu/phones/
+The above is a database of compatible hardware.
+
+To get started you should have:
+    - python 2.5 or above
+
+    - sqlite3
+        - apt-get install sqlite3
+
+    - libGammu qith python bindings
+        - apt-get install python-gammu
+
+    - A gammu compatible phone or modem with a suitable connection to
+      the machine running pysmsd
+        - check http://wammu.eu/phones 
+
+
+1) You need to create an empty database. The database file is by default:
+    pysmsd/data/pysmsd.db
+
+To create this file and the needed schema run the following:
+    $ cd pysmsd/data
+    $ sqlite3 pysmsd.db
+    SQLite version 3.6.16
+    Enter ".help" for instructions
+    Enter SQL statements terminated with a ";"
+    sqlite> .read schema.sql
+    sqlite> .quit
+
+2) You need to edit the gammurc file to match your hardware.
+See the gammurc file for examples and further information.
+
+to run pysmsd enter the following:
+    $ ./daemon.py --debug
+
+if correctly configured and running, you should see output something like the following:
+
+/usr/local/src/dev/pysmsd/pysmsd/daemon/../handlers/enabled
+Found handler: pysmsd.handlers.enabled.print_handler
+2010-08-05 15:15:53 [MainThread] {'ME': 2, 'SM': 0}
+2010-08-05 15:15:53 [http-thread] starting cherrypy httpd daemon on port 33380...
+
+Once running point your web browser at:
+    http://127.0.0.1:33380/   (default host & port)
+To view the homepage which has pointers to the various parts of the HTTP API.
+
+
+To see other startup options:
+    $ ./daemon.py --help
+
+
+An upstart compatible init script is supplied (pysmsd.upstart.conf).
+To use this:
+    1) check that the options you require are being specified correctly in this file
+    2) copy the file to /etc/init/pysmsd.conf
+        - or the equivalent on your system
+    3) run:
+        $ start pysmsd
+
+
+It is recommended that the daemon is run behind a full-featured web server
+such as NginX. Optionally SSL support can be added at this point.
+An example nginx configuration file is provided in:
+    pysmsd/http/nginx.conf
+
+For testing purposes a self-signed SSL certificate can be created using guide
+here:
+    http://www.akadia.com/services/ssh_test_certificate.html
+
+
+
+Clients
+--------------------------------------------------------------------------------
+- Every API call must be authorized by a client name/password combination.
+Client details are stored in the database in the 'clients' table.
+
+- By default a client named 'pysmsd_test' is created in the database.
+This is for testing purposes only and should be removed before putting into production.
+
+- A utility script called hash.py is provided for creating encrypted passwords
+which are suitable for inserting into the client table.
+An exmple of creating a new client named 'foo' with password 'bar' is shown below:
+    $ ./hash.py bar
+    $2a$12$1QoVM8Uhd998FkKNsip7a.HiM7guEgsY24KRsP1alEO2suKZekQFi
+    $ sqlite3 pysmsd/data/pysmsd.db
+    SQLite version 3.6.16
+    Enter ".help" for instructions
+    Enter SQL statements terminated with a ";"
+    sqlite> INSERT INTO `clients` (`name`, `password`, `created`, `updated`) VALUES('foo', '$2a$12$1QoVM8Uhd998FkKNsip7a.HiM7guEgsY24KRsP1alEO2suKZekQFi', datetime('now'), datetime('now'));
+    sqlite> .quit
+

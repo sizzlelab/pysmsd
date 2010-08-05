@@ -1,0 +1,129 @@
+<html>
+    <head>
+        <title>pysmsd</title>
+        <style type="text/css">
+            body {
+                font-family: verdana, sans-serif;
+                font-size: 80%;
+                }
+            h2 {
+                padding-bottom: 0;
+                margin-bottom: 1.0em;
+                }
+            form {
+                position: relative;
+                float: left;
+                padding: 0;
+                margin: 0;
+                }
+                form label {
+                    position: relative;
+                    float: left;
+                    min-width: 10em;
+                    padding-right: 1em;
+                    }
+                form input, form textarea {
+                    position: relative;
+                    float: left;
+                    min-width: 6em;
+                    vertical-align: top;
+                    }
+                form p {
+                    position: relative;
+                    float: left;
+                    clear: both;
+                    }
+                hr { clear: both; }
+
+
+        </style>
+    </head>
+    <body>
+        <!--[TODO: write some help/explanation text below]-->
+        <h1>pysmsd</h1>
+        <p>
+            pysmsd is an SMS daemon which allows the sending and receiving of SMS messages through a REST-ful JSON based HTTP API.
+        </p>
+
+        <hr/>
+        <h2>Fetch in messages</h2>
+        <form action="/messages/in.json" method="GET">
+            <p>
+                <label for="name">App name:</label>
+                <input type="text" name="name" value="pysmsd_test"/>
+            </p>
+            <p>
+                <label for="password">Password:</label>
+                <input type="password" name="password"/>
+            </p>
+            <p>
+                <label for="keyword">Keyword (optional):</label>
+                <input type="text" name="keyword" id="keyword"/>
+            </p>
+            <p>
+                <label for="include_marked">Include marked</label>
+                <input type="checkbox" name="include_marked" id="include_marked"/>
+            </p>
+            <p>
+                <input type="submit" value="fetch"/>
+            </p>
+        </form>
+        <hr/>
+        <h2>Fetch out messages</h2>
+        <form action="/messages/out.json" method="GET">
+            <p>
+                <label for="name">App name:</label>
+                <input type="text" name="name" value="pysmsd_test"/>
+            </p>
+            <p>
+                <label for="password">Password:</label>
+                <input type="password" name="password"/>
+            </p>
+            <p>
+                <input type="submit" value="fetch"/>
+            </p>
+        </form>
+        <hr/>
+        <h2>Send message</h2>
+        <form action="/messages/out.json" method="POST">
+            <p>
+                <label for="name">App name:</label>
+                <input type="text" name="name" value="pysmsd_test"/>
+            </p>
+            <p>
+                <label for="password">Password:</label>
+                <input type="password" name="password"/>
+            </p>
+            <p>
+                <label for="number">Number:</label>
+                <input type="text" name="number" id="number"/>
+            </p>
+            <p>
+                <label for="text">Text:</label>
+                <textarea name="text" id="text" cols="20" rows="6"></textarea>
+            </p>
+            <p>
+                <input type="submit" value="submit"/>
+            </p>
+        </form>
+        <hr/>
+        <h2>Mark message</h2>
+        <form action="/messages/in.json" method="POST">
+            <p>
+                <label for="name">App name:</label>
+                <input type="text" name="name" value="pysmsd_test"/>
+            </p>
+            <p>
+                <label for="password">Password:</label>
+                <input type="password" name="password"/>
+            </p>
+            <p>
+                <label for="ids">Ids:</label>
+                <input type="text" name="ids" id="ids"/>
+            </p>
+            <p>
+                <input type="submit" value="submit"/>
+            </p>
+        </form>
+    </body>
+</html>
