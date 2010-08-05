@@ -48,6 +48,7 @@ class Dispatcher(object):
         self.handlers = {}
 
         print os.path.join(os.path.dirname(__file__), '..', 'handlers', 'enabled')
+        module = None
         for py in os.listdir(os.path.join(os.path.dirname(__file__), '..', 'handlers', 'enabled')):
             if py[-3:] != '.py' or py == '__init__.py':
                 continue
