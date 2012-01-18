@@ -9,6 +9,12 @@ License
 pysmsd is pusblished by HIIT under the MIT License. See LICENSE for further information.
 
 
+Authors
+--------------------------------------------------------------------------------
+Konrad Markus, HIIT, <konker@gmail.com>
+Jani Turunen, HIIT, <turunen.jani@gmail.com>
+
+
 Dependencies
 --------------------------------------------------------------------------------
 pysmsd relies on the python bindings to the gammu library for hardware
