@@ -5,3 +5,5 @@ pysmsd/data/pysmsd.db
 \~*
 .DS_Store
 *.pyc
+pysmsd/http/server.crt
+pysmsd/http/server.key
