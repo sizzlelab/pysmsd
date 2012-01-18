@@ -27,7 +27,7 @@ To get started you should have:
     - sqlite3
         * apt-get install sqlite3
 
-    - libGammu qith python bindings
+    - libGammu with python bindings
         * apt-get install python-gammu
 
     - A gammu compatible phone or modem with a suitable connection to
